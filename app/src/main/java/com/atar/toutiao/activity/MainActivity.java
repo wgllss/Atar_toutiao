@@ -1,5 +1,6 @@
 package com.atar.toutiao.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
@@ -27,6 +28,7 @@ public class MainActivity extends AppCompatActivity {
                     return true;
                 case R.id.navigation_notifications:
                     mTextMessage.setText(R.string.title_notifications);
+                    startActivity(new Intent(MainActivity.this, RefreshListViewActivity.class));
                     return true;
             }
             return false;
