@@ -1,1 +1,1 @@
-include ':app', ':android-common-library8',':jcvideoplayer-lib', ':android-toutiao-skin'
+include ':app', ':android-common-library8',':jcvideoplayer-lib', ':android-toutiao-skin','android-refresh-library8'

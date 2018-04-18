@@ -20,14 +20,10 @@
         <activity
             android:name=".activity.loading.LoadActivity"
             android:screenOrientation="portrait"
-            android:theme="@android:style/Theme.Translucent.NoTitleBar.Fullscreen"></activity>
-        <activity
-            android:name=".activity.refresh.RefreshRecyclerActivity"
-            android:screenOrientation="portrait"
-            android:theme="@android:style/Theme.Translucent.NoTitleBar">
-
-        </activity>
-        <activity android:name=".activity.RefreshListViewActivity"></activity>
+            android:theme="@android:style/Theme.Translucent.NoTitleBar.Fullscreen" />
+        <activity android:name=".activity.refresh.RefreshRecyclerActivity" />
+        <activity android:name=".activity.RefreshListViewActivity" />
+        <activity android:name=".activity.ToutiaoVidioListActivity"></activity>
     </application>
 
 </manifest>
