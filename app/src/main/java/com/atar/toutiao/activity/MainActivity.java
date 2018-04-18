@@ -30,6 +30,7 @@ public class MainActivity extends AppCompatActivity {
                     return true;
                 case R.id.navigation_notifications:
                     mTextMessage.setText(R.string.title_notifications);
+                    startActivity(new Intent(MainActivity.this, RefreshListViewActivity.class));
                     return true;
             }
             return false;
