@@ -33,7 +33,7 @@ public class TipView extends LinearLayout {
     private int mBackGroundColor;
     private int mTextColor;
     private String mText;
-    private int mTextSize = 12;
+    private int mTextSize = 14;
     private TextView mTvTip;
 
     //显示所停留的时间

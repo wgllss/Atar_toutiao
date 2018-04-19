@@ -42,6 +42,7 @@ public class MainActivity extends AppCompatActivity {
 
         // 跟随ViewPager的页面切换
         lablayout_buttom.setupWithViewPager(vp_main);
+        vp_main.setOffscreenPageLimit(mTitles.length);
 
 //        tl_main.getTabAt(0).setIcon(R.drawable.selector_ico01);
 //        tl_main.getTabAt(1).setIcon(R.drawable.selector_ico02);

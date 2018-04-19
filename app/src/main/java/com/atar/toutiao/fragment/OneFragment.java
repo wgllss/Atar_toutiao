@@ -19,7 +19,7 @@ import java.util.List;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
-import cn.bingoogolapple.refreshlayout.BGAMoocStyleRefreshViewHolder;
+import cn.bingoogolapple.refreshlayout.BGANormalRefreshViewHolder;
 import cn.bingoogolapple.refreshlayout.BGARefreshLayout;
 
 /**
@@ -56,11 +56,11 @@ public class OneFragment extends Fragment implements BGARefreshLayout.BGARefresh
             }
         }
         refreshLayout.setDelegate(this);
-        BGAMoocStyleRefreshViewHolder moocStyleRefreshViewHolder = new BGAMoocStyleRefreshViewHolder(getActivity(), true);
-        moocStyleRefreshViewHolder.setUltimateColor(R.color.custom_imoocstyle);
-        moocStyleRefreshViewHolder.setOriginalImage(R.mipmap.custom_mooc_icon);
+        BGANormalRefreshViewHolder moocStyleRefreshViewHolder = new BGANormalRefreshViewHolder(getActivity(), true);
+//        moocStyleRefreshViewHolder.setUltimateColor(R.color.custom_imoocstyle);
+//        moocStyleRefreshViewHolder.setOriginalImage(R.mipmap.custom_mooc_icon);
         moocStyleRefreshViewHolder.setLoadMoreBackgroundColorRes(R.color.custom_imoocstyle);
-        moocStyleRefreshViewHolder.setSpringDistanceScale(0.2f);
+//        moocStyleRefreshViewHolder.setSpringDistanceScale(0.2f);
         moocStyleRefreshViewHolder.setRefreshViewBackgroundColorRes(R.color.custom_imoocstyle);
         refreshLayout.setRefreshViewHolder(moocStyleRefreshViewHolder);
 
@@ -83,6 +83,7 @@ public class OneFragment extends Fragment implements BGARefreshLayout.BGARefresh
             @Override
             public void run() {
                 refreshLayout.endRefreshing();
+                mTipView.show("215615");
             }
         }, 2000);
     }
