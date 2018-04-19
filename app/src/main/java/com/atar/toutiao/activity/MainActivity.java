@@ -3,18 +3,19 @@ package com.atar.toutiao.activity;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 
 import com.atar.toutiao.R;
+import com.atar.toutiao.adapter.ViewPagerFragmentAdapter;
 import com.atar.toutiao.fragment.OneFragment;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
-    private TabLayout tl_main;
+    private TabLayout lablayout_buttom;
     private ViewPager vp_main;
     private String[] mTitles = {"首页", "视频", "微头条", "我的"};
     private List<Fragment> mList = new ArrayList<Fragment>();
@@ -24,37 +25,23 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        tl_main = (TabLayout) findViewById(R.id.lablayout_buttom);
+        lablayout_buttom = (TabLayout) findViewById(R.id.lablayout_buttom);
+
         vp_main = (ViewPager) findViewById(R.id.vp_main);
 
-        mList.add(OneFragment.newInstance(mTitles[0], "fragment_1"));
-        mList.add(OneFragment.newInstance(mTitles[1], "fragment_2"));
-        mList.add(OneFragment.newInstance(mTitles[2], "fragment_3"));
-        mList.add(OneFragment.newInstance(mTitles[3], "fragment_4"));
+        mList.add(OneFragment.newInstance());
+        mList.add(OneFragment.newInstance());
+        mList.add(OneFragment.newInstance());
+        mList.add(OneFragment.newInstance());
 
-        vp_main.setAdapter(new FragmentPagerAdapter(getSupportFragmentManager()) {
-            @Override
-            public Fragment getItem(int position) {
-                return mList.get(position);
-            }
-
-            @Override
-            public int getCount() {
-                return mTitles.length;
-            }
-
-            @Override
-            public CharSequence getPageTitle(int position) {
-                return mTitles[position];
-            }
-        });
+        vp_main.setAdapter(new ViewPagerFragmentAdapter(getSupportFragmentManager(), mList, Arrays.asList(mTitles)));
 //        tl_main.addTab(tl_main.newTab().setText(mTitles[0]));
 //        tl_main.addTab(tl_main.newTab().setText(mTitles[1]));
 //        tl_main.addTab(tl_main.newTab().setText(mTitles[2]));
 //        tl_main.addTab(tl_main.newTab().setText(mTitles[3]));
 
         // 跟随ViewPager的页面切换
-        tl_main.setupWithViewPager(vp_main);
+        lablayout_buttom.setupWithViewPager(vp_main);
 
 //        tl_main.getTabAt(0).setIcon(R.drawable.selector_ico01);
 //        tl_main.getTabAt(1).setIcon(R.drawable.selector_ico02);
@@ -62,7 +49,7 @@ public class MainActivity extends AppCompatActivity {
 //        tl_main.getTabAt(3).setIcon(R.drawable.selector_ico04);
 
 
-        tl_main.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+        lablayout_buttom.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
                 int position = tab.getPosition();

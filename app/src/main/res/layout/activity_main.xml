@@ -15,9 +15,9 @@
         android:layout_width="match_parent"
         android:layout_height="55dp"
         android:layout_alignParentBottom="true"
-        android:background="#2d2c2c"
+        android:background="#DDDDDA"
         android:paddingTop="3dp"
         app:tabIndicatorHeight="0dp"
-        app:tabSelectedTextColor="#0dd627"
-        app:tabTextColor="#fff" />
+        app:tabSelectedTextColor="#059ced"
+        app:tabTextColor="#555555" />
 </RelativeLayout>
