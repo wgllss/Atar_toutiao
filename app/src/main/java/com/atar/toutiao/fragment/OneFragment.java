@@ -4,6 +4,7 @@ package com.atar.toutiao.fragment;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -12,6 +13,8 @@ import android.view.ViewGroup;
 
 import com.atar.toutiao.R;
 import com.atar.toutiao.adapter.RecyclerAdapter;
+import com.atar.toutiao.adapter.VideoListAdapter;
+import com.atar.toutiao.beans.NewsBean;
 import com.atar.toutiao.widget.TipView;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
 import com.scwang.smartrefresh.layout.listener.OnLoadMoreListener;
@@ -36,8 +39,8 @@ public class OneFragment extends Fragment {
     @Bind(R.id.rv_recyclerview_data)
     RecyclerView recyclerView;
 
-    private List<String> list = new ArrayList<String>();
-    private RecyclerAdapter mRecyclerAdapter = new RecyclerAdapter(list);
+    private List<NewsBean> list = new ArrayList<NewsBean>();
+    private VideoListAdapter mRecyclerAdapter = new VideoListAdapter(list);
 
     public static OneFragment newInstance() {
         OneFragment fragment = new OneFragment();
@@ -56,16 +59,16 @@ public class OneFragment extends Fragment {
                 parent.removeView(rootView);
             }
         }
-
         return rootView;
     }
 
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());
-        layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
-        recyclerView.setLayoutManager(layoutManager);
+//        LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());
+//        layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
+//        recyclerView.setLayoutManager(layoutManager);
+        recyclerView.setLayoutManager(new GridLayoutManager(getActivity(), 1));
         recyclerView.setAdapter(mRecyclerAdapter);
 
         refreshLayout.setEnableAutoLoadMore(true);//开启自动加载功能（非必须）

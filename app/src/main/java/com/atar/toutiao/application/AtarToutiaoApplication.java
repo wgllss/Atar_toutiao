@@ -1,6 +1,7 @@
 package com.atar.toutiao.application;
 
 import android.app.Application;
+import android.application.CommonApplication;
 import android.content.Context;
 
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
@@ -38,4 +39,9 @@ public class AtarToutiaoApplication extends Application {
         });
     }
 
+    @Override
+    public void onCreate() {
+        super.onCreate();
+        CommonApplication.initApplication(this);
+    }
 }
