@@ -15,21 +15,30 @@
         app:tipTextColor="@color/color_4592C6"
         app:tipTextSize="14dp" />
 
-    <cn.bingoogolapple.refreshlayout.BGARefreshLayout
-        android:id="@+id/refresh_layout"
+    <com.scwang.smartrefresh.layout.SmartRefreshLayout
+        android:id="@+id/refreshLayout"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1">
+        android:layout_height="match_parent"
+        app:srlEnableFooterFollowWhenLoadFinished="true"
+        app:srlEnableScrollContentWhenLoaded="true">
+        <!--<cn.bingoogolapple.refreshlayout.BGARefreshLayout-->
+        <!--android:id="@+id/refresh_layout"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="0dp"-->
+        <!--android:layout_weight="1">-->
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/rv_recyclerview_data"
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
+            android:layout_height="match_parent"
             android:overScrollMode="never"
             android:scrollbars="none" />
 
-    </cn.bingoogolapple.refreshlayout.BGARefreshLayout>
+        <!--</cn.bingoogolapple.refreshlayout.BGARefreshLayout>-->
 
-
+        <com.scwang.smartrefresh.layout.footer.ClassicsFooter
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:srlClassicsSpinnerStyle="Translate" />
+    </com.scwang.smartrefresh.layout.SmartRefreshLayout>
 </LinearLayout>

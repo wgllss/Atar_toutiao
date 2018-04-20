@@ -1,8 +1,8 @@
 package com.atar.toutiao.fragment;
 
 
-import android.common.CommonHandler;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -13,25 +13,26 @@ import android.view.ViewGroup;
 import com.atar.toutiao.R;
 import com.atar.toutiao.adapter.RecyclerAdapter;
 import com.atar.toutiao.widget.TipView;
+import com.scwang.smartrefresh.layout.api.RefreshLayout;
+import com.scwang.smartrefresh.layout.listener.OnLoadMoreListener;
+import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
-import cn.bingoogolapple.refreshlayout.BGANormalRefreshViewHolder;
-import cn.bingoogolapple.refreshlayout.BGARefreshLayout;
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class OneFragment extends Fragment implements BGARefreshLayout.BGARefreshLayoutDelegate {
+public class OneFragment extends Fragment {
 
     private View rootView;
     @Bind(R.id.tip_view)
     TipView mTipView;
-    @Bind(R.id.refresh_layout)
-    BGARefreshLayout refreshLayout;
+    @Bind(R.id.refreshLayout)
+    RefreshLayout refreshLayout;
     @Bind(R.id.rv_recyclerview_data)
     RecyclerView recyclerView;
 
@@ -55,15 +56,6 @@ public class OneFragment extends Fragment implements BGARefreshLayout.BGARefresh
                 parent.removeView(rootView);
             }
         }
-        refreshLayout.setDelegate(this);
-        BGANormalRefreshViewHolder moocStyleRefreshViewHolder = new BGANormalRefreshViewHolder(getActivity(), true);
-//        moocStyleRefreshViewHolder.setUltimateColor(R.color.custom_imoocstyle);
-//        moocStyleRefreshViewHolder.setOriginalImage(R.mipmap.custom_mooc_icon);
-        moocStyleRefreshViewHolder.setLoadMoreBackgroundColorRes(R.color.custom_imoocstyle);
-//        moocStyleRefreshViewHolder.setSpringDistanceScale(0.2f);
-        moocStyleRefreshViewHolder.setRefreshViewBackgroundColorRes(R.color.custom_imoocstyle);
-        refreshLayout.setRefreshViewHolder(moocStyleRefreshViewHolder);
-
 
         return rootView;
     }
@@ -75,27 +67,34 @@ public class OneFragment extends Fragment implements BGARefreshLayout.BGARefresh
         layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setAdapter(mRecyclerAdapter);
-    }
 
-    @Override
-    public void onBGARefreshLayoutBeginRefreshing(final BGARefreshLayout refreshLayout) {
-        CommonHandler.getInstatnce().getHandler().postDelayed(new Runnable() {
+        refreshLayout.setEnableAutoLoadMore(true);//开启自动加载功能（非必须）
+        refreshLayout.setOnRefreshListener(new OnRefreshListener() {
             @Override
-            public void run() {
-                refreshLayout.endRefreshing();
-                mTipView.show("215615");
+            public void onRefresh(@NonNull final RefreshLayout refreshLayout) {
+                refreshLayout.getLayout().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        refreshLayout.finishRefresh();
+                        refreshLayout.setNoMoreData(false);
+                        mTipView.show("215615");
+                    }
+                }, 2000);
             }
-        }, 2000);
-    }
+        });
+        refreshLayout.setOnLoadMoreListener(new OnLoadMoreListener() {
+            @Override
+            public void onLoadMore(@NonNull final RefreshLayout refreshLayout) {
+                refreshLayout.getLayout().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        refreshLayout.finishLoadMore();
+                    }
+                }, 2000);
+            }
+        });
 
-    @Override
-    public boolean onBGARefreshLayoutBeginLoadingMore(final BGARefreshLayout refreshLayout) {
-        CommonHandler.getInstatnce().getHandler().postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                refreshLayout.endLoadingMore();
-            }
-        }, 2000);
-        return true;
+        //触发自动刷新
+        refreshLayout.autoRefresh();
     }
 }
