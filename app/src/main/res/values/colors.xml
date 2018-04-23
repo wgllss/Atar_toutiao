@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <color name="translucent">#00000000</color>
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
@@ -8,7 +9,7 @@
 
     <color name="colorPrimaryDarkTrans">#CCf57257</color>
 
-    <color name="custom_imoocstyle">#eb4f38</color>
+    <color name="custom_imoocstyle">#DDDDDD</color>
     <color name="imoocstyle">#CA0612</color>
 
     <color name="test_spacing1">#9674FC</color>

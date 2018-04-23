@@ -10,6 +10,7 @@
           <set>
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/android-common-library8" />
+            <option value="$PROJECT_DIR$/android-refresh-library8" />
             <option value="$PROJECT_DIR$/android-toutiao-skin" />
             <option value="$PROJECT_DIR$/app" />
             <option value="$PROJECT_DIR$/jcvideoplayer-lib" />
