@@ -1,4 +1,4 @@
-package com.chaychan.news.model.entity;
+package com.atar.toutiao.modles;
 
 /**
  * @author ChayChan

@@ -3,6 +3,7 @@ package com.atar.toutiao.application;
 import android.app.Application;
 import android.application.CommonApplication;
 import android.content.Context;
+import android.utils.ShowLog;
 
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.scwang.smartrefresh.layout.api.DefaultRefreshFooterCreator;
@@ -43,5 +44,6 @@ public class AtarToutiaoApplication extends Application {
     public void onCreate() {
         super.onCreate();
         CommonApplication.initApplication(this);
+        ShowLog.setDebug(true);
     }
 }

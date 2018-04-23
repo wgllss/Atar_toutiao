@@ -1,18 +1,12 @@
 package com.atar.toutiao.net;
 
 
-import java.util.List;
-import java.util.Map;
+import com.atar.toutiao.modles.NewsResponse;
+import com.atar.toutiao.modles.VideoPathResponse;
 
-import okhttp3.RequestBody;
-import retrofit2.http.Body;
-import retrofit2.http.Field;
-import retrofit2.http.FormUrlEncoded;
+import retrofit2.http.GET;
 import retrofit2.http.Headers;
-import retrofit2.http.Multipart;
 import retrofit2.http.POST;
-import retrofit2.http.Part;
-import retrofit2.http.PartMap;
 import retrofit2.http.Query;
 import rx.Observable;
 
@@ -20,6 +14,9 @@ import rx.Observable;
  * Created by Sunflower on 2015/11/4.
  */
 public interface APIService {
+    String GET_ARTICLE_LIST = "api/news/feed/v62/?refer=1&count=20&loc_mode=4&device_id=34960436458&iid=13136511752";
+    String GET_COMMENT_LIST = "article/v2/tab_comments/";
+
 
 //    /**
 //     * 获取帖子分类列表
@@ -122,4 +119,15 @@ public interface APIService {
 //    @POST("api/gravida/article/unfavourite.json")
 //    Observable<Response<Object>> cancelFavorite(@Field("id") String id, @Field("articleId") List<Long> articleId);
 
+    @GET(GET_ARTICLE_LIST)
+    Observable<NewsResponse> getNewsList(@Query("category") String category, @Query("min_behot_time") long lastTime, @Query("last_refresh_sub_entrance_interval") long currentTime);
+
+    @Headers({
+            "Content-Type:application/x-www-form-urlencoded; charset=UTF-8",
+            "Cookie:PHPSESSIID=334267171504; _ga=GA1.2.646236375.1499951727; _gid=GA1.2.951962968.1507171739; Hm_lvt_e0a6a4397bcb500e807c5228d70253c8=1507174305;Hm_lpvt_e0a6a4397bcb500e807c5228d70253c8=1507174305; _gat=1",
+            "Origin:http://toutiao.iiilab.com"
+
+    })
+    @POST("http://service.iiilab.com/video/toutiao")
+    Observable<VideoPathResponse> getVideoPath(@Query("link") String link, @Query("r") String r, @Query("s") String s);
 }

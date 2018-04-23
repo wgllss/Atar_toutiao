@@ -1,4 +1,4 @@
-package com.chaychan.news.model.response;
+package com.atar.toutiao.modles;
 
 import com.google.gson.Gson;
 

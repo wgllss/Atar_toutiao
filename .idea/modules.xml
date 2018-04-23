@@ -3,16 +3,11 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/Atar_toutiao.iml" filepath="$PROJECT_DIR$/Atar_toutiao.iml" />
-      <module fileurl="file://D:\shouji\git20171007\Atar_toutiao\Atar_toutiao.iml" filepath="D:\shouji\git20171007\Atar_toutiao\Atar_toutiao.iml" />
       <module fileurl="file://$PROJECT_DIR$/android-common-library8/android-common-library8.iml" filepath="$PROJECT_DIR$/android-common-library8/android-common-library8.iml" />
-      <module fileurl="file://D:\shouji\git20171007\Atar_toutiao\android-common-library8\android-common-library8.iml" filepath="D:\shouji\git20171007\Atar_toutiao\android-common-library8\android-common-library8.iml" />
       <module fileurl="file://$PROJECT_DIR$/android-refresh-library8/android-refresh-library8.iml" filepath="$PROJECT_DIR$/android-refresh-library8/android-refresh-library8.iml" />
       <module fileurl="file://$PROJECT_DIR$/android-toutiao-skin/android-toutiao-skin.iml" filepath="$PROJECT_DIR$/android-toutiao-skin/android-toutiao-skin.iml" />
-      <module fileurl="file://D:\shouji\git20171007\Atar_toutiao\android-toutiao-skin\android-toutiao-skin.iml" filepath="D:\shouji\git20171007\Atar_toutiao\android-toutiao-skin\android-toutiao-skin.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
-      <module fileurl="file://D:\shouji\git20171007\Atar_toutiao\app\app.iml" filepath="D:\shouji\git20171007\Atar_toutiao\app\app.iml" />
       <module fileurl="file://$PROJECT_DIR$/jcvideoplayer-lib/jcvideoplayer-lib.iml" filepath="$PROJECT_DIR$/jcvideoplayer-lib/jcvideoplayer-lib.iml" />
-      <module fileurl="file://D:\shouji\git20171007\Atar_toutiao\jcvideoplayer-lib\jcvideoplayer-lib.iml" filepath="D:\shouji\git20171007\Atar_toutiao\jcvideoplayer-lib\jcvideoplayer-lib.iml" />
     </modules>
   </component>
 </project>

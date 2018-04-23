@@ -23,7 +23,7 @@ public class RxJavaOkHttpRetrofit {
 
     private String TAG = RxJavaOkHttpRetrofit.class.getSimpleName();
 
-    private static final String API_HOST = "";//MyService.baseUrl;
+    private static final String API_HOST = "http://is.snssdk.com/";//MyService.baseUrl;
 
     private Retrofit retrofit;
     private final HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor(

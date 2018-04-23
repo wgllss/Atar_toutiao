@@ -1,27 +1,28 @@
 package com.atar.toutiao.net;
 
+import com.atar.toutiao.modles.NewsResponse;
+import com.atar.toutiao.modles.VideoPathResponse;
+
 import rx.functions.Action1;
 import rx.subscriptions.CompositeSubscription;
-
 
 public class NetWorkInterfaces {
     private static RxJavaOkHttpRetrofit mRxJavaOkHttpRetrofit = RxJavaOkHttpRetrofit
             .getInstance();
-//
-//	public static void getArticleCategory(
-//			CompositeSubscription comSubscription,
-//			Action1<WonderfulTopicJson> onNext, String pageNo) {
-//		mRxJavaOkHttpRetrofit
-//				.RxJava(comSubscription,
-//						mRxJavaOkHttpRetrofit.getService(MyService.class)
-//								.getArticleCategory(pageNo), onNext);
-//	}
-//
-//	public static void apiCheckUserName(CompositeSubscription comSubscription,
-//			Action1<String> onNext, String userName) {
-//		mRxJavaOkHttpRetrofit
-//				.RxJava(comSubscription,
-//						mRxJavaOkHttpRetrofit.getService(MyService.class)
-//								.apiCheckUserName(userName), onNext);
-//	}
+
+    public static void getNewsList(CompositeSubscription comSubscription,
+                                   Action1<NewsResponse> onNext, String category, long lastTime, long currentTime) {
+        mRxJavaOkHttpRetrofit
+                .RxJava(comSubscription,
+                        mRxJavaOkHttpRetrofit.getService(APIService.class)
+                                .getNewsList(category, lastTime, currentTime), onNext);
+    }
+
+    public static void getVidioDetal(CompositeSubscription comSubscription,
+                                     Action1<VideoPathResponse> onNext, String link, String r, String s) {
+        mRxJavaOkHttpRetrofit
+                .RxJava(comSubscription,
+                        mRxJavaOkHttpRetrofit.getService(APIService.class)
+                                .getVideoPath(link, r, s), onNext);
+    }
 }
