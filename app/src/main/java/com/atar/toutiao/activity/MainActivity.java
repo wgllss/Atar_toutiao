@@ -5,10 +5,15 @@ import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
+import android.widget.CommonToast;
 
 import com.atar.toutiao.R;
 import com.atar.toutiao.adapter.ViewPagerFragmentAdapter;
+import com.atar.toutiao.event.TestEvent;
 import com.atar.toutiao.fragment.OneFragment;
+import com.hwangjr.rxbus.RxBus;
+import com.hwangjr.rxbus.annotation.Subscribe;
+import com.hwangjr.rxbus.annotation.Tag;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -88,5 +93,19 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
+
+        RxBus.get().register(this);
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        RxBus.get().unregister(this);
+    }
+
+    @Subscribe(tags = {@Tag("TAG")})
+    public void orderSwitch(TestEvent event) {
+        CommonToast.show("165198158888888888888888");
+
     }
 }

@@ -25,4 +25,12 @@ public class NetWorkInterfaces {
                         mRxJavaOkHttpRetrofit.getService(APIService.class)
                                 .getVideoPath(link, r, s), onNext);
     }
+
+    public static void getVidioDetal2(CompositeSubscription comSubscription,
+                                     Action1<VideoPathResponse> onNext, String link, String r, String s) {
+        mRxJavaOkHttpRetrofit
+                .RxJava(comSubscription,
+                        mRxJavaOkHttpRetrofit.getService(MyService.class)
+                                .getVideoPath(link, r, s), onNext);
+    }
 }
