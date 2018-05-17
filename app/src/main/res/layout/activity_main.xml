@@ -3,10 +3,27 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:background="#ff0000"
+        app:contentInsetStart="0dp"
+        android:layout_gravity="center">
 
+        <TextView
+            android:id="@+id/txt_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="首页"
+            android:textColor="@color/white"
+            android:textSize="20dp" />
+    </android.support.v7.widget.Toolbar>
     <android.support.v4.view.ViewPager
         android:id="@+id/vp_main"
         android:layout_width="match_parent"
+        android:layout_below="@+id/toolbar"
         android:layout_height="match_parent"
         android:layout_above="@+id/lablayout_buttom" />
 

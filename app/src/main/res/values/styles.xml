@@ -27,4 +27,22 @@
         <!-- 去除滚动条 -->
         <item name="android:fadingEdge">none</item> <!-- 去除ListView滑到顶部和底部时边缘的黑色阴影 -->
     </style>
+
+    <style name="Common_Theme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!--<item name="colorPrimary">#D7AC72</item>-->
+        <item name="colorPrimaryDark">#00000000</item><!-- 状态栏颜色-->
+        <!--<item name="toolbar_under_line">#D7AC72</item>-->
+        <!--<item name="buttonTextColor">@color/color_A38B53</item>-->
+        <!--<item name="buttonBg">#D7AC72</item>-->
+        <!--<item name="buttonBgClick">@color/color_A38B53</item>-->
+        <!--<item name="buttonBgEnable">#f0dfc8</item>-->
+    </style>
+
+
+    <style name="AppTheme.Toolbar" parent="Widget.AppCompat.ActionBar">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">?attr/actionBarSize</item>
+        <item name="android:background">?attr/colorPrimary</item>
+        <item name="android:theme">@style/ThemeOverlay.AppCompat.Dark.ActionBar</item>
+    </style>
 </resources>
