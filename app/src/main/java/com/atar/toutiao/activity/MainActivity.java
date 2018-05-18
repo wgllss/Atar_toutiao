@@ -17,6 +17,7 @@ import com.atar.toutiao.event.TestEvent;
 import com.atar.toutiao.fragment.OneFragment;
 import com.atar.toutiao.fragment.RecyclerViewHeaderStickyFragment;
 import com.atar.toutiao.fragment.SecondFragment;
+import com.atar.toutiao.fragment.SixFragment;
 import com.atar.toutiao.fragment.TestCoordinatorLayoutFragment;
 import com.atar.toutiao.fragment.ThirdFragment;
 import com.atar.toutiao.fragment.ViewpageTopFragment;
@@ -31,7 +32,7 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity {
     private TabLayout lablayout_buttom;
     private ViewPager vp_main;
-    private String[] mTitles = {"首页", "视频", "微头条", "我的","5"};
+    private String[] mTitles = {"首页", "视频", "微头条", "我的","5","6"};
     private List<Fragment> mList = new ArrayList<Fragment>();
     private TextView txt_title;
     private Toolbar toolbar;
@@ -52,7 +53,8 @@ public class MainActivity extends AppCompatActivity {
         mList.add(SecondFragment.newInstance());
         mList.add(ThirdFragment.newInstance());
         mList.add(new RecyclerViewHeaderStickyFragment());
-        mList.add(new TestCoordinatorLayoutFragment());
+        mList.add(new RecyclerViewHeaderStickyFragment());
+        mList.add(new SixFragment());
 //        mList.add(OneFragment.newInstance());
 
         vp_main.setAdapter(new ViewPagerFragmentAdapter(getSupportFragmentManager(), mList, Arrays.asList(mTitles)));
@@ -83,6 +85,10 @@ public class MainActivity extends AppCompatActivity {
                 } else if (position == 2) {
                     toolbar.setVisibility(View.GONE);
                 } else if (position == 3) {
+                    toolbar.setVisibility(View.GONE);
+                } else if (position == 4) {
+                    toolbar.setVisibility(View.GONE);
+                } else if (position == 5) {
                     toolbar.setVisibility(View.GONE);
                 }
                 // 设置ViewPager的页面切换

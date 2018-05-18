@@ -18,6 +18,7 @@
             android:layout_height="match_parent"
             android:fitsSystemWindows="true"
             app:contentScrim="?attr/colorPrimary"
+            app:statusBarScrim="@color/colorPrimary"
             app:expandedTitleMarginEnd="64dp"
             app:expandedTitleMarginStart="48dp"
             app:layout_scrollFlags="scroll|exitUntilCollapsed">
@@ -36,8 +37,9 @@
             <android.support.v7.widget.Toolbar
                 android:id="@+id/toolbar"
                 style="@style/AppTheme.Toolbar"
-                android:background="@color/colorPrimary"
+                android:background="@android:color/transparent"
                 app:layout_collapseMode="pin"
+                app:title="51515"
                 app:navigationIcon="?attr/homeAsUpIndicator">
 
                 <android.support.v7.widget.ButtonBarLayout
