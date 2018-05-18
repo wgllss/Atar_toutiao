@@ -74,8 +74,7 @@ public class SecondFragment extends Fragment implements NestedScrollView.OnScrol
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        color = ContextCompat.getColor(getActivity(), R.color.colorPrimary) ;
-        scrollView.setOnScrollChangeListener(this);
+        color = ContextCompat.getColor(getActivity(), R.color.colorPrimary)& 0x00ffffff ;
         refreshLayout.setOnMultiPurposeListener(new SimpleMultiPurposeListener() {
             @Override
             public void onHeaderMoving(RefreshHeader header, boolean isDragging, float percent, int offset, int headerHeight, int maxDragHeight) {
@@ -94,8 +93,16 @@ public class SecondFragment extends Fragment implements NestedScrollView.OnScrol
                 refreshLayout.finishLoadMore(3000);
             }
         });
+        scrollView.setOnScrollChangeListener(this);
         buttonBarLayout.setAlpha(0);
         toolbar.setBackgroundColor(0);
+
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+//                finish();
+            }
+        });
     }
 
     @Override

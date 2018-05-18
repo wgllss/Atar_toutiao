@@ -15,7 +15,9 @@ import com.atar.toutiao.R;
 import com.atar.toutiao.adapter.ViewPagerFragmentAdapter;
 import com.atar.toutiao.event.TestEvent;
 import com.atar.toutiao.fragment.OneFragment;
+import com.atar.toutiao.fragment.RecyclerViewHeaderStickyFragment;
 import com.atar.toutiao.fragment.SecondFragment;
+import com.atar.toutiao.fragment.TestCoordinatorLayoutFragment;
 import com.atar.toutiao.fragment.ThirdFragment;
 import com.atar.toutiao.fragment.ViewpageTopFragment;
 import com.hwangjr.rxbus.RxBus;
@@ -29,7 +31,7 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity {
     private TabLayout lablayout_buttom;
     private ViewPager vp_main;
-    private String[] mTitles = {"首页", "视频", "微头条", "我的"};
+    private String[] mTitles = {"首页", "视频", "微头条", "我的","5"};
     private List<Fragment> mList = new ArrayList<Fragment>();
     private TextView txt_title;
     private Toolbar toolbar;
@@ -49,7 +51,8 @@ public class MainActivity extends AppCompatActivity {
         mList.add(OneFragment.newInstance());
         mList.add(SecondFragment.newInstance());
         mList.add(ThirdFragment.newInstance());
-        mList.add(ViewpageTopFragment.newInstance());
+        mList.add(new RecyclerViewHeaderStickyFragment());
+        mList.add(new TestCoordinatorLayoutFragment());
 //        mList.add(OneFragment.newInstance());
 
         vp_main.setAdapter(new ViewPagerFragmentAdapter(getSupportFragmentManager(), mList, Arrays.asList(mTitles)));

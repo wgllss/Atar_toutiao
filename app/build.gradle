@@ -42,7 +42,7 @@ dependencies {
     implementation 'com.scwang.smartrefresh:SmartRefreshHeader:1.1.0-alpha-5'
     //没有使用特殊Header，可以不加这行
     //    compile 'com.android.support:appcompat-v7:25.3.1'//版本 23以上（必须）
-    implementation 'com.github.chaychan:MultipleItemRvAdapter:1.0.3'
+//    implementation 'com.github.chaychan:MultipleItemRvAdapter:1.0.3'
     implementation 'com.github.bumptech.glide:glide:4.3.0'
     implementation 'com.android.support:support-v4:26.1.0'
     testImplementation 'junit:junit:4.12'
@@ -57,6 +57,7 @@ dependencies {
     compile('com.github.niorgai:StatusBarCompat:2.1.4', {
         exclude group: 'com.android.support'
     })
+    compile 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.0'
 
 
 }
