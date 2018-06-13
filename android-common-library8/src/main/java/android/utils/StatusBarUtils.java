@@ -23,7 +23,7 @@ import android.support.v7.widget.Toolbar;
  **/
 public class StatusBarUtils {
 
-    public static void translucentStatusBar(Activity activity, Toolbar toolbar) {
+    public static void translucentStatusBar(Activity activity, ViewGroup toolbar) {
         try {
             if (activity == null) {
                 return;

@@ -1,5 +1,6 @@
 package com.atar.toutiao.activity;
 
+import android.activity.CommonActivity;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
@@ -21,6 +22,7 @@ import com.atar.toutiao.fragment.SixFragment;
 import com.atar.toutiao.fragment.TestCoordinatorLayoutFragment;
 import com.atar.toutiao.fragment.ThirdFragment;
 import com.atar.toutiao.fragment.ViewpageTopFragment;
+import com.atar.toutiao.uiinterfases.ToolBarInterface;
 import com.hwangjr.rxbus.RxBus;
 import com.hwangjr.rxbus.annotation.Subscribe;
 import com.hwangjr.rxbus.annotation.Tag;
@@ -29,99 +31,88 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity {
-    private TabLayout lablayout_buttom;
-    private ViewPager vp_main;
-    private String[] mTitles = {"首页", "视频", "微头条", "我的","5","6"};
-    private List<Fragment> mList = new ArrayList<Fragment>();
+public class MainActivity extends AtarCommonTabActivity implements TabLayout.OnTabSelectedListener {
+
+
+    private String[] mTitles = {"首页", "视频", "微头条", "我的", "5", "6"};
     private TextView txt_title;
     private Toolbar toolbar;
+    private TabLayout lablayout_buttom;
+
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        toolbar = (Toolbar) findViewById(R.id.toolbar);
-        StatusBarUtils.translucentStatusBar(this, toolbar);
+    protected ToolBarInterface getToolBarInterface() {
+        return null;
+    }
+
+    @Override
+    protected int getResLayoutID() {
+        return R.layout.activity_main;
+    }
+
+    @Override
+    protected void bindEvent() {
+        lablayout_buttom.addOnTabSelectedListener(this);
+    }
+
+    @Override
+    protected void initControl() {
+        super.initControl();
         txt_title = findViewById(R.id.txt_title);
-
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
         lablayout_buttom = findViewById(R.id.lablayout_buttom);
+        lablayout_buttom.setupWithViewPager(getViewPager());
+    }
 
-        vp_main = findViewById(R.id.vp_main);
+    @Override
+    protected void initValue() {
+        StatusBarUtils.translucentStatusBar(this, toolbar);
+        setTextTab(mTitles, false, true);
+        addFragmentToList(OneFragment.newInstance());
+        addFragmentToList(SecondFragment.newInstance());
+        addFragmentToList(ThirdFragment.newInstance());
+        addFragmentToList(new RecyclerViewHeaderStickyFragment());
+        addFragmentToList(new RecyclerViewHeaderStickyFragment());
+        addFragmentToList(new SixFragment());
+        setViewPagerAdapter();
+        setOnDrawerBackEnabled(false);
+    }
 
-        mList.add(OneFragment.newInstance());
-        mList.add(SecondFragment.newInstance());
-        mList.add(ThirdFragment.newInstance());
-        mList.add(new RecyclerViewHeaderStickyFragment());
-        mList.add(new RecyclerViewHeaderStickyFragment());
-        mList.add(new SixFragment());
-//        mList.add(OneFragment.newInstance());
+    @Override
+    public void onTabSelected(TabLayout.Tab tab) {
+        int position = tab.getPosition();
+        txt_title.setText(mTitles[position]);
+        if (position == 0) {
+            toolbar.setVisibility(View.VISIBLE);
+        } else if (position == 1) {
+            toolbar.setVisibility(View.GONE);
+        } else if (position == 2) {
+            toolbar.setVisibility(View.GONE);
+        } else if (position == 3) {
+            toolbar.setVisibility(View.GONE);
+        } else if (position == 4) {
+            toolbar.setVisibility(View.GONE);
+        } else if (position == 5) {
+            toolbar.setVisibility(View.GONE);
+        }
+        // 设置ViewPager的页面切换
+        getViewPager().setCurrentItem(position);
+    }
 
-        vp_main.setAdapter(new ViewPagerFragmentAdapter(getSupportFragmentManager(), mList, Arrays.asList(mTitles)));
-//        tl_main.addTab(tl_main.newTab().setText(mTitles[0]));
-//        tl_main.addTab(tl_main.newTab().setText(mTitles[1]));
-//        tl_main.addTab(tl_main.newTab().setText(mTitles[2]));
-//        tl_main.addTab(tl_main.newTab().setText(mTitles[3]));
+    @Override
+    public void onTabUnselected(TabLayout.Tab tab) {
 
-        // 跟随ViewPager的页面切换
-        lablayout_buttom.setupWithViewPager(vp_main);
-        vp_main.setOffscreenPageLimit(mTitles.length);
+    }
 
-//        tl_main.getTabAt(0).setIcon(R.drawable.selector_ico01);
-//        tl_main.getTabAt(1).setIcon(R.drawable.selector_ico02);
-//        tl_main.getTabAt(2).setIcon(R.drawable.selector_ico03);
-//        tl_main.getTabAt(3).setIcon(R.drawable.selector_ico04);
+    @Override
+    public void onTabReselected(TabLayout.Tab tab) {
 
-
-        lablayout_buttom.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
-            @Override
-            public void onTabSelected(TabLayout.Tab tab) {
-                int position = tab.getPosition();
-                txt_title.setText(mTitles[position]);
-                if (position == 0) {
-                    toolbar.setVisibility(View.VISIBLE);
-                } else if (position == 1) {
-                    toolbar.setVisibility(View.GONE);
-                } else if (position == 2) {
-                    toolbar.setVisibility(View.GONE);
-                } else if (position == 3) {
-                    toolbar.setVisibility(View.GONE);
-                } else if (position == 4) {
-                    toolbar.setVisibility(View.GONE);
-                } else if (position == 5) {
-                    toolbar.setVisibility(View.GONE);
-                }
-                // 设置ViewPager的页面切换
-                vp_main.setCurrentItem(position);
-            }
-
-            @Override
-            public void onTabUnselected(TabLayout.Tab tab) {
-//                int position = tab.getPosition();
-//                if (position == 0) {
-//
-//                } else if (position == 1) {
-//
-//                } else if (position == 2) {
-//
-//                } else if (position == 3) {
-//
-//                }
-            }
-
-            @Override
-            public void onTabReselected(TabLayout.Tab tab) {
-
-            }
-        });
-
-        RxBus.get().register(this);
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        RxBus.get().unregister(this);
+//        RxBus.get().unregister(this);
     }
 
     @Subscribe(tags = {@Tag("TAG")})

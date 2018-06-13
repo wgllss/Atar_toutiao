@@ -1,6 +1,7 @@
 package com.atar.toutiao.adapter;
 
 import android.adapter.CommonRecyclerAdapter;
+import android.appconfig.AppConfigModel;
 import android.common.CommonHandler;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -77,6 +78,7 @@ public class VideoListAdapter extends CommonRecyclerAdapter<News> {
                     VideoPathDecoder decoder = new VideoPathDecoder() {
                         @Override
                         public void onSuccess(final String url) {
+                            AppConfigModel.getInstance().putString(info.item_id, url, true);
                             CommonHandler.getInstatnce().getHandler().post(
                                     new Runnable() {
                                         @Override
@@ -92,7 +94,15 @@ public class VideoListAdapter extends CommonRecyclerAdapter<News> {
                         public void onDecodeError() {
                         }
                     };
-                    decoder.decodePath(mCompositeSubscription, info.url);
+                    String url = AppConfigModel.getInstance().getString(info.item_id, "");
+                    if (!"".equals(url)) {
+                        ((ViewHoder) holder).video_player.setUp(url, JCVideoPlayer.SCREEN_LAYOUT_LIST, info.title);
+                        ((ViewHoder) holder).video_player.seekToInAdvance = info.video_detail_info.progress;
+                        ((ViewHoder) holder).video_player.startVideo();
+                    } else {
+                        decoder.decodePath(mCompositeSubscription, info.url);
+                    }
+
                 }
             });
 

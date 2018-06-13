@@ -46,6 +46,7 @@ public abstract class VideoPathDecoder {
 
             @Override
             public void onGetPath(String path) {
+                ShowLog.e(TAG, "onGetPath--path--" + path);
                 onSuccess(path);
             }
         });
@@ -63,7 +64,7 @@ public abstract class VideoPathDecoder {
                     public void run() {
                         addJs(webView);
                     }
-                }, 500);
+                }, 0);
 
             }
         });

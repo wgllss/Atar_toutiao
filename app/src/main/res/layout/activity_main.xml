@@ -3,13 +3,14 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
+
     <android.support.v7.widget.Toolbar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="45dp"
+        android:layout_gravity="center"
         android:background="#ff0000"
-        app:contentInsetStart="0dp"
-        android:layout_gravity="center">
+        app:contentInsetStart="0dp">
 
         <TextView
             android:id="@+id/txt_title"
@@ -20,12 +21,13 @@
             android:textColor="@color/white"
             android:textSize="20dp" />
     </android.support.v7.widget.Toolbar>
+
     <android.support.v4.view.ViewPager
-        android:id="@+id/vp_main"
+        android:id="@+id/view_pager"
         android:layout_width="match_parent"
-        android:layout_below="@+id/toolbar"
         android:layout_height="match_parent"
-        android:layout_above="@+id/lablayout_buttom" />
+        android:layout_above="@+id/lablayout_buttom"
+        android:layout_below="@+id/toolbar" />
 
     <android.support.design.widget.TabLayout
         android:id="@+id/lablayout_buttom"
